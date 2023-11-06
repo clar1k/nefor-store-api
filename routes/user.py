@@ -1,9 +1,11 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from config.database import engine, User
 from sqlmodel import Session
-from passwords.password import get_password_hash
 from sqlalchemy.exc import IntegrityError
+
+from models.user import User
+from config.database import engine
+from passwords.password import get_password_hash
 
 user = APIRouter(prefix='/user', tags=['User'])
 
