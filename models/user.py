@@ -1,21 +1,27 @@
 from typing import Optional
-from pydantic import EmailStr, BaseModel
+
+from pydantic import BaseModel, EmailStr
 from sqlmodel import Field, SQLModel
 
-class User(SQLModel, table=True):
-    __tablename__='Users'
-    id: Optional[int] = Field(default=None, primary_key=True)
+
+class UserRegister(BaseModel):
     first_name: str = Field(alias='firstName')
     last_name: str = Field(alias='lastName')
     birth_date: str = Field(alias='birthday')
     email: EmailStr = Field(unique=True)
     password: str
-    # password_salt: str
-    # adress: str
-    # role: str
-    # phone_number: str
+
+
+class User(UserRegister, SQLModel, table=True):
+    __tablename__ = 'Users'
+    id: int = Field(default=None, primary_key=True)
 
 
 class UserInput(BaseModel):
     email: EmailStr
     password: str
+
+
+class UserInputUpdate(UserInput, BaseModel):
+    first_name: Optional[str] = Field(alias='firstName')
+    last_name: Optional[str] = Field(alias='lastName')
