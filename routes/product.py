@@ -5,16 +5,16 @@ from fastapi.responses import JSONResponse
 
 product = APIRouter(prefix='/items', tags=['Product'])
 
+with open('dummy-data.json') as file:
+    content = file.read()
+    content = json.loads(content)
+
 
 @product.get('')
 def get_items(page: int = 0):
-    with open('dummy-data.json') as file:
-        content = file.read()
-
-    content = json.loads(content)
     return JSONResponse(content, 200)
 
 
-@product.post('/add')
-def add_product():
-    return JSONResponse()
+@product.get('/{item_id}')
+def get_item_by_id(item_id: int):
+    return JSONResponse(content[item_id], 200)

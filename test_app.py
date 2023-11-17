@@ -20,7 +20,7 @@ def test_register():
     }
     response = client.post('/user/', json=user)
 
-    assert response.status_code == 401
+    assert response.status_code == 201
 
 
 def test_login():
@@ -32,3 +32,4 @@ def test_login():
 def test_fetching_items():
     response = client.get('/items/')
     assert response.status_code == 200
+    assert response.json() != []

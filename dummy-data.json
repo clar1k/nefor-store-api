@@ -1,8 +1,7 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "name": "Cake Circle, Paprus",
-
     "brand": "http://dummyimage.com/108x100.png/ff4444/ffffff",
     "price": 371.01,
     "currency": "EUR",
@@ -14,7 +13,7 @@
     "category": "Home Decor"
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "Orange - Tangerine",
     "brand": "http://dummyimage.com/160x100.png/5fa2dd/ffffff",
     "price": 189.69,
@@ -27,7 +26,7 @@
     "category": "Home Decor"
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "Wine - Red, Harrow Estates, Cab",
     "brand": "http://dummyimage.com/162x100.png/cc0000/ffffff",
     "price": 284.06,
@@ -40,7 +39,7 @@
     "category": "Home Decor"
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "Snapple Raspberry Tea",
     "brand": "http://dummyimage.com/162x100.png/5fa2dd/ffffff",
     "price": 129.94,
@@ -53,7 +52,7 @@
     "category": "Home Decor"
   },
   {
-    "id": 5,
+    "id": 4,
     "name": "Steampan - Lid For Half Size",
     "brand": "http://dummyimage.com/207x100.png/dddddd/000000",
     "price": 564.19,
@@ -66,7 +65,7 @@
     "category": "Home Decor"
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "Cake - Bande Of Fruit",
     "brand": "http://dummyimage.com/101x100.png/5fa2dd/ffffff",
     "price": 568.38,
