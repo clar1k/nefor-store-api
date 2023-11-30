@@ -34,7 +34,6 @@ app.include_router(product.product)
 
 @app.get('/')
 def index(Authorize: AuthJWT = Depends()):
-    access_token = Authorize.create_access_token(subject='1')
     return RedirectResponse('/docs', 303)
 
 
