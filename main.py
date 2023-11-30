@@ -1,13 +1,20 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from uvicorn import run as run_app
-
+from icecream import ic
+from config.config import JWTSettings
 from config.database import create_db_and_tables
 from routes import auth, product, user
+from fastapi_jwt_auth import AuthJWT
 
 app = FastAPI(debug=True, title='Nefor Store')
 app_name = 'main:app'
+
+
+@AuthJWT.load_config
+def get_config():
+    return JWTSettings()
 
 
 app.add_middleware(
@@ -26,7 +33,8 @@ app.include_router(product.product)
 
 
 @app.get('/')
-def index():
+def index(Authorize: AuthJWT = Depends()):
+    access_token = Authorize.create_access_token(subject='1')
     return RedirectResponse('/docs', 303)
 
 

@@ -1,11 +1,12 @@
 from datetime import datetime
 
 from pydantic import BaseModel
+from pydantic import Field as BaseField
 from sqlmodel import Field, SQLModel
 
 
 class Product(BaseModel):
-    name: str
+    name: str = BaseField(min_length=4)
     brand: str
     price: float
     amount: int
