@@ -58,3 +58,14 @@ class UserInput(BaseModel):
 class UserInputUpdate(UserInput, BaseModel):
     first_name: Optional[str] = Field(alias='firstName')
     last_name: Optional[str] = Field(alias='lastName')
+
+
+def userdb_to_dict(user: User):
+    return {
+        'id': user.id,
+        'firstName': user.first_name,
+        'lastName': user.last_name,
+        'birthday': user.birth_date,
+        'email': user.email,
+        'isAdmin': user.is_admin,
+    }

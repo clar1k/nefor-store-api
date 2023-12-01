@@ -6,7 +6,7 @@ from sqlmodel import Session, delete, update
 
 
 from config.database import engine
-from models.user import User, UserRegister
+from models.user import User, UserRegister, userdb_to_dict
 from passwords.password import hash_info
 
 user = APIRouter(prefix='/user', tags=['User'])
@@ -57,3 +57,11 @@ def delete_user_by_id(user_id: int) -> JSONResponse:
         session.execute(delete_stmnt)
         session.commit()
     return JSONResponse({'msg': 'Delete success'}, 200)
+
+
+@user.get('/')
+def get_all_users() -> JSONResponse:
+    with Session(engine) as session:
+        users = session.query(User).all()
+        users = [userdb_to_dict(user) for user in users]
+        return JSONResponse(users, 200)
